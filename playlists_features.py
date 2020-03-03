@@ -91,6 +91,7 @@ for index, id_playlist in enumerate(filtered.index[starting_value:]):
 
 
 # %%
+# filtered[filtered.apply(lambda x: 'work' in x.lower())].head(50)
 
 # %%
 songs = pd.DataFrame({'playlists':playlist,'artists':artists, 'popularity':popularity, 'name':names}, index=playlist.index)

@@ -66,7 +66,7 @@ spotify.remove_nodes_from(list(nx.isolates(spotify)))
 # nx.get_node_attributes(spotify, '37i9dQZF1DWT8aqnwgRt92')
 # -
 
-# # Proning the graph
+# # Pruning the graph
 
 # +
 # spotify = nx.read_gpickle('data/network_bipartite.gpkl')
@@ -80,4 +80,7 @@ def prune(spotify, playlists):
     return spotify_small.subgraph(stay_nodes)
 
 # +
-# G = prone(spotify, playlists)
+# G = prune(spotify, playlists)
+# -
+
+

@@ -19,32 +19,26 @@ spotify = nx.read_gpickle('data/network_bipartite.gpkl')
 
 
 
+# +
+from networkx.algorithms import bipartite
+
+spotify = nx.read_gpickle('data/network_bipartite.gpkl')
 spotify_big_connected = spotify.subgraph(next(nx.connected_components(spotify)))
-
 playlists, artists = bipartite.sets(spotify_big_connected)
-
 artists_projection = bipartite.weighted_projected_graph(spotify_big_connected, artists)
-
 artists_projection = nx.read_gpickle('./data/artists_projection.gpkl')
 
-
-
 playlists_projection = bipartite.weighted_projected_graph(spotify_big_connected, playlists)
-
 nx.write_gpickle(playlists_projection, 'data/playlists_projection.gpkl')
-
 nx.write_gpickle(artists_projection, 'data/artists_projection.gpkl')
 
 import pandas as pd
 playlists = pd.read_pickle('data/final_spotify_playlists.pkl')
 
-
 def get_nearest(projection, id_playlist):
     neighbors = playlists_projection.neighbors(id_playlist)
     tal = [(projection[id_playlist][id_n]['weight'],id_n,playlists.loc[id_n]) for id_n in neighbors]
     return sorted(tal, reverse=True)
-
-
 
 get_nearest(playlists_projection, '37i9dQZF1DXbHcQpOiXk1D')
 

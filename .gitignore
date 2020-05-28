@@ -3,3 +3,5 @@ cred.txt
 slides/
 
 data/artists_projection.gpkl
+notebooks/data.json
+notebooks/big_graph.json
